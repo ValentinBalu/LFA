@@ -1,0 +1,75 @@
+Q=[]
+P=[]
+F=[]
+stareintiala=(input('stareinitiala='))
+alfabet=input('alfabet=')
+dfa={}
+starifinaledfa=[]
+finale={}
+t=()
+L=[]
+nrtranzitii=int(input('nrtranzitii='))
+for i in range(nrtranzitii):
+    x=(input('x='))
+    y=(input('y='))
+    z=int(input('z='))
+    finale[x]=0
+    finale[y]=0
+    t=(x,y,z)
+    L.append(t)
+print(L)
+nrstarifinale=int(input('nrstarifinale='))
+for i in range (nrstarifinale):
+    x=input("x=")
+    finale[x]=1
+    starifinaledfa.append(x)
+alfabet1='deb'
+def drum(l):
+    if l!='':
+        dfa[l]={'0':0,'1':0}
+        lfinal1=[]
+        lfinal2=[]
+        for i in range(len(l)):
+            l1=[]
+            l2=[]
+            for j in range(len(L)):
+                if l[i]==L[j][0] and L[j][2]==0 :
+                    l1.append(L[j][1])
+                if l[i]==L[j][0] and L[j][2]==1:
+                    l2.append(L[j][1])
+            lfinal1.extend(l1)
+            lfinal2.extend(l2)
+            l1=[]
+            l2=[]
+        que1=[]
+        for a in lfinal1:
+            if a not in que1:
+                que1.append(a)
+        que2 = []
+        for a in lfinal2:
+            if a not in que2:
+                que2.append(a)
+        dfa[l]={'0':que1,'1':que2}
+        s=''
+        for a in que1:
+            s=s+a
+        s=''.join(sorted(s))
+        if s not in Q:
+            Q.append(s)
+        s=''
+        for a in que2:
+            s=s+a
+        s=''.join(sorted(s))
+        if s not in Q:
+            Q.append(s)
+
+
+drum(stareintiala)
+while(Q) :
+    x=Q[0]
+    Q.remove(Q[0])
+    if x not in P:
+        drum(x)
+        P.append(x)
+print(dfa)
+
