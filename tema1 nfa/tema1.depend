@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1584998367 source:c:\users\valentin\desktop\facultate semii\lfa\tema1\main.cpp
+	<iostream>
+	<cstring>
+
+1588281703 source:c:\users\valentin\desktop\facultate semii\lfa\tema1 nfa\main.cpp
+	<iostream>
+	<cstring>
+	<iostream>
+	<bits/stdc++.h>
+
